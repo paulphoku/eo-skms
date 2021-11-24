@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>add-user</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-avatar *ngIf="photo_url === ''" class="avater">
+      <img src="../../assets/default-imgs/avater-default.png">
+    </ion-avatar>
+    <ion-avatar *ngIf="photo_url != ''" class="avater">
+      <img src="{{photo_url}}">
+    </ion-avatar>
+    <ion-item>
+      <input type="file" (change)="take_picture($event)" accept=".jpg;.jpeg">
+    </ion-item>
+
+    <form [formGroup]="addUserForm" (ngSubmit)="submit()">
+      <br>
+      <ion-col class="row">
+        <ion-item lines="none" class="valid" [class.is-invalid]="(addUserForm.get('name').invalid && isSubmitted)">
+          <ion-input formControlName="name" type="text" placeholder="Name">
+          </ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="valid" [class.is-invalid]="(addUserForm.get('surname').invalid && isSubmitted)">
+          <ion-input formControlName="surname" type="text" placeholder="surname">
+          </ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="valid" [class.is-invalid]="(addUserForm.get('email').invalid && isSubmitted)">
+          <ion-input formControlName="email" type="text" placeholder="email">
+          </ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="valid" [class.is-invalid]="(addUserForm.get('contact').invalid && isSubmitted)">
+          <ion-input formControlName="contact" type="text" placeholder="contact">
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="valid" [class.is-invalid]="(addUserForm.get('company').invalid && isSubmitted)">
+          <ion-label style="text-align: left;">company:</ion-label>
+          <ion-select formControlName="company" value="select" okText="Okay" cancelText="Dismiss">
+            <ion-select-option *ngFor="let item of Company" value="{{item.name}}">{{item.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
+      </ion-col>
+    </form>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer class="ion-no-border" style="margin-bottom: 40px;">
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="submit()" color="primary" shape="round" fill="outline"
+        style="width: 90%;margin-left: 20px;margin-bottom: 20px;">
+        <strong>
+          Save
+        </strong>
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="dismiss()" color="secondary" shape="round" fill="outline"
+        style="width: 90%;margin-right: 20px;margin-bottom: 20px;">
+        <strong>
+          Dismiss
+        </strong>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-footer>

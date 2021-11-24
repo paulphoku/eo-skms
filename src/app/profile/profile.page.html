@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-card>
+      <ion-card-content>
+        <ion-row>
+          <ion-col>
+            <ion-avatar *ngIf="photo_url === ''" class="avater">
+              <img src="../../assets/default-imgs/avater-default.png">
+            </ion-avatar>
+            <ion-avatar *ngIf="photo_url != ''" class="avater">
+              <img src="{{photo_url}}">
+            </ion-avatar>
+          </ion-col>
+          <ion-col>
+            <ion-text>
+              <br>
+              {{surname}} {{name}}<br>
+              {{company}}<br>
+              {{email}}<br>
+              {{datetime}}
+            </ion-text>
+          </ion-col>
+        </ion-row>
+
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-row>
+          <ion-list-header>
+            Allocated Keys
+          </ion-list-header>
+          <table>
+            <tr class="header">
+              <th>Key name:</th>
+              <th>Company</th>
+              <th>Reference no</th>
+              <th></th>
+            </tr>
+            <tr *ngFor="let doc of Key;">
+              <td>{{doc.name}}</td>
+              <td>{{doc.company}}</td>
+              <td>{{doc.ref}}</td>
+              <td>
+                <ion-icon (click)="options_menu($event,'options_key', doc.ref)" name="ellipsis-vertical-outline"></ion-icon>
+              </td>
+
+            </tr>
+          </table>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+
+
+
+  </ion-grid>
+</ion-content>

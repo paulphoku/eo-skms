@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>man-key</ion-title>
+  </ion-toolbar>
+</ion-header>
+<br>
+<ion-card>
+  <ion-searchbar [(ngModel)]="searchText" (ngModelChange)="get_docs()" showCancelButton="focus"></ion-searchbar>
+</ion-card>
+
+<ion-content>
+  <ion-grid>
+    <ion-col>
+      <ion-card>
+        <ion-card-content>
+          <table>
+            <tr class="header">
+              <th>Key name:</th>
+              <th>Company</th>
+              <th>Reference no</th>
+              <th>state</th>
+              <th></th>
+            </tr>
+            <tr *ngFor="let doc of Key;">
+              <td>{{doc.name}}</td>
+              <td>{{doc.company}}</td>
+              <td>{{doc.ref}}</td>
+              <td>{{doc.state}}</td>
+              <td>
+                <ion-icon (click)="options_menu($event,'options_key', doc.ref)" name="ellipsis-vertical-outline"></ion-icon>
+              </td>
+
+            </tr>
+          </table>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
+
+  </ion-grid>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="add_new_key()">
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>man-company</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<br>
+<ion-card>
+  <ion-searchbar [(ngModel)]="searchText" (ngModelChange)="get_docs()" showCancelButton="focus"></ion-searchbar>
+</ion-card>
+
+<ion-content>
+  <ion-grid>
+    <ion-col>
+      <ion-card>
+        <ion-card-content>
+          <table>
+            <tr class="header">
+              <th>Name</th>
+              <th>Contact person</th>
+              <th>Contact no</th>
+              <th>Contact email</th>
+              <th>state</th>
+            </tr>
+            <tr *ngFor="let doc of Company;">
+              <td>{{doc.name}}</td>
+              <td>{{doc.contact_person}}</td>
+              <td>{{doc.contact_nr}}</td>
+              <td>{{doc.contact_email}}</td>
+              <td>{{doc.state}}</td>
+              <!-- <td>
+                <ion-item lines="none" class="ion-no-padding">
+                  <ion-button color="danger" (click)="del_document(doc.id, doc.doc_title)" shape="outline">Delete
+                  </ion-button>
+                  <ion-button color="success" (click)="edit_doc(doc.id, doc.doc_title, doc.doc_url, doc.doc_type)"
+                    shape="outline">Edit</ion-button>
+                </ion-item>
+              </td> -->
+            </tr>
+          </table>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
+
+  </ion-grid>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="add_new_company()">
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

@@ -1,0 +1,52 @@
+<ion-header *ngIf="!key_ref">
+  <ion-toolbar>
+    <ion-title>man-user</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header *ngIf="key_ref">
+  <ion-toolbar>
+    <ion-title>Select user</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<br>
+<ion-card>
+  <ion-searchbar [(ngModel)]="searchText" (ngModelChange)="get_docs()" showCancelButton="focus"></ion-searchbar>
+</ion-card>
+
+<ion-content>
+  <ion-grid>
+    <ion-row  class="parent">
+
+      <!-- add new user -->
+      <ion-card *ngIf="!key_ref" class="child" (click)="add_new_user();">
+        <ion-avatar class="avater">
+          <ion-icon name="person-add-outline"></ion-icon>
+        </ion-avatar>
+        <ion-card-header>
+          <ion-card-title>Add user</ion-card-title>
+          <ion-card-subtitle></ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+
+      <!-- list of users -->
+      <ion-card *ngFor="let item of Users" class="child" (click)="select_profile(item);">
+        <ion-avatar *ngIf="item.photo_url === ''" class="avater">
+          <img src="../../assets/default-imgs/avater-default.png">
+        </ion-avatar>
+        <ion-avatar *ngIf="item.photo_url != ''" class="avater">
+          <img src="{{item.photo_url}}">
+        </ion-avatar>
+        <ion-card-header>
+          <ion-card-title>{{item.name}}</ion-card-title>
+          <ion-card-subtitle>{{item.company}}</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+
+      
+
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,114 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border-bottom: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:hover {
+    color: var(--ion-color-secondary);
+}
+
+.header {
+    color: var(--ion-color-primary);
+}
+
+.parent {
+    display: grid;
+    grid-gap: 2vw;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
+    max-width: 100vw;
+    margin: auto;
+}
+
+.child {
+    height: 200px;
+    width: 200px;
+    // background-color: brown;
+    text-align: center;
+    ion-icon {
+        font-size: 100px;
+    }
+}
+
+.avater {
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.modal-class {
+    --height: 40%;
+    align-items: flex-end;
+    --border-radius: 15px 15px 0px 0px !important;
+}
+
+.valid {
+    text-align: left;
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 10px;
+    width: 90%;
+    height: 42;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.valid-bottom-input {
+    text-align: center;
+    border-bottom: 1px solid var(--ion-color-medium);
+    border-radius: 0px;
+    width: 90%;
+    height: 42;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.is-invalid {
+    text-align: left;
+    border: 1px solid var(--ion-color-danger);
+    border-radius: 10px;
+    width: 90%;
+    height: 42;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    ion-input {
+        --color: var(--ion-color-danger);
+    }
+    ion-datetime {
+        --placeholder-color: var(--ion-color-danger);
+    }
+    --color: var(--ion-color-danger);
+}
+
+.is-invalid-bottom-input {
+    text-align: center;
+    border-bottom: 1px solid var(--ion-color-danger);
+    width: 90%;
+    height: 42;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.error {
+    color: var(--ion-color-danger);
+    font-size: x-small;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+    display: flex;
+}

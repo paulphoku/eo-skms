@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>add-device</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <form [formGroup]="addDeviceForm" (ngSubmit)="submit()">
+
+      <br>
+      <ion-col class="row">
+        <ion-item lines="none" class="valid" [class.is-invalid]="(addDeviceForm.get('name').invalid && isSubmitted)">
+          <ion-input formControlName="name" type="text" placeholder="Name">
+          </ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="valid" [class.is-invalid]="(addDeviceForm.get('ref').invalid && isSubmitted)">
+          <ion-input formControlName="ref" type="text" placeholder="ref">
+          </ion-input>
+        </ion-item>
+
+        <ion-item class="valid" [class.is-invalid]="(addDeviceForm.get('company').invalid && isSubmitted)">
+          <ion-label style="text-align: left;">company:</ion-label>
+          <ion-select formControlName="company" value="select" okText="Okay" cancelText="Dismiss">
+            <ion-select-option *ngFor="let item of Company" value="{{item.name}}">{{item.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
+      </ion-col>
+    </form>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer class="ion-no-border" style="margin-bottom: 40px;">
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="submit()" color="primary" shape="round" fill="outline"
+        style="width: 90%;margin-left: 20px;margin-bottom: 20px;">
+        <strong>
+          Save
+        </strong>
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="dismiss()" color="secondary" shape="round" fill="outline"
+        style="width: 90%;margin-right: 20px;margin-bottom: 20px;">
+        <strong>
+          Dismiss
+        </strong>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-footer>
